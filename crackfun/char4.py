@@ -316,8 +316,6 @@ def cover(root, node1, node2):
         return ret
     return ret+cover(root.right, node1, node2)
 
-
-
 # Question 4.7 Subtree
 def isSubTree(t1, t2):
   if t2 is None:
