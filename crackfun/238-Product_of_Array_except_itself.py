@@ -1,4 +1,3 @@
-
 class Solution:
     # @param {integer[]} nums
     # @return {integer[]}
@@ -14,3 +13,5 @@ class Solution:
             output[i] = output[i] * p
             p = p * nums[i]
         return output
+
+
