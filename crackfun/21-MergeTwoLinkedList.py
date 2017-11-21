@@ -3,7 +3,6 @@ class ListNode(object):
          self.val = x
          self.next = None
 
-
     def mergeTwoLists(l1, l2):
         """
         :type l1: ListNode
