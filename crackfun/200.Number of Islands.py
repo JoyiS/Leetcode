@@ -1,3 +1,36 @@
+# 11/23 Update AC Solution
+class Solution(object):
+    def check(self, grid, x, y):
+        if self.visit[x][y] != False:
+            return False
+        queue = [[x, y]]
+        dx = [1, 0, -1, 0]
+        dy = [0, 1, 0, -1]
+        while queue:
+            [px, py] = queue.pop()
+            for dxx, dyy in zip(dx, dy):
+                if 0 <= px + dxx < len(grid) and 0 <= py + dyy < len(grid[0]):
+                    if grid[px + dxx][py + dyy] == '1' and self.visit[px + dxx][py + dyy] == False:
+                        queue.append([px + dxx, py + dyy])
+                        self.visit[px + dxx][py + dyy] = True
+        return True
+
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        if not grid:
+            return 0
+        self.visit = [[False for i in range(len(grid[0]))] for j in range(len(grid))]
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1' and self.check(grid, i, j):
+                    count += 1
+        return count
+#---------------- OLD VERSIONS.
+
 class Solution(object):
     def numIslands(self, grid):
         """
