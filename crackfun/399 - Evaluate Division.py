@@ -5,12 +5,6 @@
 class Solution(object):
     import collections
     def calcEquation(self, equations, values, query):
-        """
-        :type equations: List[List[str]]
-        :type values: List[float]
-        :type query: List[List[str]]
-        :rtype: List[float]
-        """
         g = collections.defaultdict(lambda: collections.defaultdict(int))
         for (s, t), v in zip(equations, values):
             g[s][t] = v
@@ -27,30 +21,15 @@ class Solution(object):
         return ans
 
 # Method 2: Use DFS
-
 import collections
 class Solution(object):
     def calcEquation(self, equations, values, queries):
-        """
-        :type equations: List[List[str]]
-        :type values: List[float]
-        :type queries: List[List[str]]
-        :rtype: List[float]
-        """
-
         # complicated: convert to values for vertices => unweighted edges
         # here we use weighted edges
         # diveding => undirected
         # corner: zero (don't include to the graph)
-
         # define DFS method
         def DFS(v1, v2, discoveredSet):
-            """
-            :type v1: str
-            :type v2: str
-            :type discoveredSet: set[str] # to avoid cycle
-            :rtype: float
-            """
             if v2 in G[v1]:
                 discoveredSet.add(v2)
                 return W[v1, v2]

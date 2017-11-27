@@ -24,7 +24,7 @@ class Solution(object):
             self.res = max(self.res, len(path) + 1)
             return
 
-        
+
 # Good Solution; use a Cache to reduce repeat recursions!!!!
 class Solution(object):
     def longestIncreasingPath(self, matrix):
