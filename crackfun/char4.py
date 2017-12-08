@@ -122,9 +122,6 @@ def bfs_paths(graph, start, end):
                     queue.append((next, path + [next]))
     return paths
 
-
-
-
 def dfs_paths(graph, start, end):
     queue = [(start,[start])]
     while queue:
@@ -136,8 +133,6 @@ def dfs_paths(graph, start, end):
                 else:
                     queue.append((next, path+[next]))
     return paths
-
-
 
 '''
 question 4.4
@@ -248,14 +243,12 @@ def bstToll(root):
             current = current.get_next()
     return result
 
-
 def inOrder(root=None, outputs=[]):
   if root is None:
     return None
   inOrder(root.left, outputs)
   outputs.append(root.value)
   inOrder(root.right, outputs)
-
 
 def findLeftMost(node):
     if node==None:
