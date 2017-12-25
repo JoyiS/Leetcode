@@ -5,10 +5,8 @@ class TrieNode:
         self.isWord = False
 
 class Trie:
-
     def __init__(self):
         self.root = TrieNode()
-
     # @param {string} word
     # @return {void}
     # Inserts a word into the trie.
@@ -49,3 +47,12 @@ class Trie:
 # trie = Trie()
 # trie.insert("somestring")
 # trie.search("key")
+
+
+if __name__ == "__main__":
+    wordTree = Trie()
+    wordTree.insert('apple')
+    wordTree.insert('applepie')
+    wordTree.insert('american')
+    wordTree.search('american')
+

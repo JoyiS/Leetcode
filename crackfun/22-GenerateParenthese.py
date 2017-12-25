@@ -1,3 +1,4 @@
+# Problem 22 is similar to Problem 20.
 class Solution(object):
     def helpler(self, l, r, item, res):
         if r < l:
