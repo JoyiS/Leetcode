@@ -337,8 +337,8 @@ def paintFence(n,k):
         return k
     if n==2:
         return k+k*(k-1)
-    samecount = k;
-    diffcount = k * (k - 1);
+    samecount = k
+    diffcount = k * (k - 1)
     for i in range(3,n):
         temp = diffcount
         diffcount = (samecount*(k-1) + diffcount*(k-1))

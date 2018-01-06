@@ -1,5 +1,5 @@
 # Python Program for union-find algorithm to detect cycle in a undirected graph
-# we have one egde for any two vertex i.e 1-2 is either 1-2 or 2-1 but not both
+# we have one edge for any two vertex i.e 1-2 is either 1-2 or 2-1 but not both
 
 from collections import defaultdict
 # This class represents a undirected graph using adjacency list representation

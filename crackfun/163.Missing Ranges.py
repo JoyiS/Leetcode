@@ -1,3 +1,19 @@
+# AC solution
+class Solution(object):
+    def findMissingRanges(self, nums, lower, upper):
+        result = []
+        nums.append(upper + 1)
+        pre = lower - 1
+        for i in nums:
+            if (i == pre + 2):
+                result.append(str(i - 1))
+            elif (i > pre + 2):
+                result.append(str(pre + 1) + "->" + str(i - 1))
+            pre = i
+        return result
+
+# ------------- This solution gives memory limit!!
+# for exmaple nums = [0] lower  = 0 upper = 2**31-1
 class Solution(object):
     def findMissingRanges(self, nums, lower, upper):
         """
@@ -8,7 +24,7 @@ class Solution(object):
         """
         res = []
         real_res = []
-        for i in range(lower,upper+1):
+        for i in range(lower,upper+1): # This increase the time/space complexity a lot! which is bad
             if i not in nums:
                 res.append(i)
         last = res[0]

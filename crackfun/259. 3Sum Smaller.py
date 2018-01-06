@@ -1,3 +1,5 @@
+# This is a good two pointer problem!!
+# The key to this problem is to reduce the time complexity
 class Solution():
     def threeSumSmaller(self, nums, target):
         if len(nums)<3:
@@ -14,3 +16,4 @@ class Solution():
                 else:
                     h -= 1
         return count
+
