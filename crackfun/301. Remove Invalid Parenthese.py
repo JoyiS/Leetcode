@@ -1,3 +1,8 @@
+# This is a very good question
+'''
+BFS can be very useful
+'''
+
 # Learn about filter function
 # Method 1: BFS
 class Solution():
