@@ -25,6 +25,31 @@ class Solution(object):
                 q.put((node.val, node))
         return head.next
 
+
+# second time 1/17/2018
+
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+
+        q = []
+        dummy = output = ListNode(0)
+        for node in lists:
+            if node:
+                heapq.heappush(q, (node.val, node))
+        while q:
+            (val, node) = heapq.heappop(q)
+            output.next = node
+            output = output.next
+            if node.next:
+                node = node.next
+                heapq.heappush(q, (node.val, node))
+        return dummy.next
+
+
 # Method 3: Merge: Divide and Conquer:
 # Time Complexity : Time complexity : O(N\log k)O(Nlogk) where \text{k}k is the number of linked lists.
 # Space Complexity : O(1)

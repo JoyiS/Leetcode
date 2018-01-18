@@ -29,6 +29,31 @@ class Solution(object):
         return max(len(tasks), (MaxTaskCount - 1) * (n + 1) + NumofMaxTask)
 
 
+# Shally's genius method!!!
+class Solution(object):
+        import collections
+    def leastInterval(self, tasks, n):
+        if n == 0:
+            return len(tasks)
+
+        dct = collections.Counter(tasks)
+        dct1 = [i for i in dct.values() if i > 0]
+
+        cnt = 0
+        while len(dct1) > 0 and max(dct1) > 1:
+            dct1 = sorted(dct1, reverse=True)
+            cnt += n + 1
+            if len(dct1) < n + 1:
+                dct1 = [j - 1 for j in dct1 if j - 1 > 0]
+            else:
+                dct11 = dct1[:n + 1]
+                dct12 = dct1[n + 1:]
+                dct1 = [j - 1 for j in dct11 if j - 1 > 0]
+                dct1.extend(dct12)
+
+        return cnt + sum(dct1)
+
+
 
 # Method 2: Priority Queue # This method can generate the output OKay
 from Queue import PriorityQueue
