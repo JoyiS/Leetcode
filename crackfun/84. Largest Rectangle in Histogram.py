@@ -20,14 +20,13 @@ class Solution(object):
 
 # Method 2: stack algorithm
 def largestRectangleArea(self, height):
-    height.append(0)
+    height.append(0) # This is very important
     stack = [-1]
     ans = 0
-    for i in xrange(len(height)):
+    for i in range(len(height)):
         while height[i] < height[stack[-1]]:
             h = height[stack.pop()]
             w = i - stack[-1] - 1
             ans = max(ans, h * w)
         stack.append(i)
-    height.pop()
     return ans
