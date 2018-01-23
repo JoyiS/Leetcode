@@ -4,6 +4,9 @@
 #         self.x = a
 #         self.y = b
 
+# second time 1/21/2018
+# understand the greatest common divisor method
+
 class Solution:
     def maxPoints(self, points):
         if len(points) <= 2: return len(points)

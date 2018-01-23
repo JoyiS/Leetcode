@@ -5,6 +5,7 @@ class Solution(object):
         for w in words:
             if num_of_letters + len(w) + len(cur) > maxWidth:
                 for i in range(maxWidth - num_of_letters):
+                    print(cur)
                     cur[i%(len(cur)-1 or 1)] += ' ' # This is a smart line!!! to add space!!!
                 res.append(''.join(cur))
                 cur, num_of_letters = [], 0
@@ -73,5 +74,10 @@ class Solution(object):
             resline += line
         resline += allline[-1]
         return resline
+
+
+
+
+
 
 

@@ -11,3 +11,10 @@ class Solution(object):
             maxval,minval = max(nums[i],maxval*nums[i],minval*nums[i]), min(nums[i],maxval*nums[i],minval*nums[i])
             maximum = max(maxval,maximum)
         return maximum
+
+
+# 1/21/2018
+# second time
+'''
+the key point is that the subarray can depends on previous or not depending on that....
+'''

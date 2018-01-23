@@ -1,3 +1,5 @@
+# I need to understand and memorize these two permutation questions!!!!
+
 class Solution(object):
     def permuteUnique(self, nums):
         """
@@ -20,6 +22,5 @@ class Solution(object):
             s = news
             i += 1
         return s
-
 
 

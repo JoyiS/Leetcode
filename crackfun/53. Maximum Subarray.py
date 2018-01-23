@@ -18,3 +18,21 @@ class Solution:
             maxSum = max(maxSum, curSum)
 
         return maxSum
+
+# Second Time for LinkedIn High Frequency
+
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        cum = 0
+        res = float('-inf')
+        for i in range(len(nums)):
+            if cum<=0:
+                cum = nums[i]
+            else:
+                cum+=nums[i]
+            res=max(res,cum)
+        return res

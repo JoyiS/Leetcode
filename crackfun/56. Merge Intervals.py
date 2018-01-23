@@ -27,3 +27,34 @@ class Solution(object):
             res.append([last.start, last.end])
         return res
 
+# 1/21/2018
+# Second time:
+'''
+The key point is that the last inteval will need to be added in the end
+'''
+# Definition for an interval.
+# class Interval:
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
+
+class Solution:
+    def merge(self, intervals):
+        """
+        :type intervals: List[Interval]
+        :rtype: List[Interval]
+        """
+
+        if len(intervals) < 2:
+            return intervals
+        res = []
+        intervals.sort(key=lambda x: x.start)
+        newstart = intervals[0].start
+        lastend = intervals[0].end
+        for interval in intervals[1:]:
+            if interval.start > lastend:
+                res += [[newstart, lastend]]
+                newstart = interval.start
+            lastend = max(lastend, interval.end)
+        res += [[newstart, lastend]]
+        return res

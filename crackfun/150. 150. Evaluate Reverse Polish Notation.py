@@ -1,3 +1,19 @@
+'''
+Very important knowledge: '-4'.isdigit() will return False!!!!!!!
+
+about the division operation the Leetcode and python 2.x version gives differnet results/
+'''
+'''
+Evaluate the value of an arithmetic expression in Reverse Polish Notation.
+
+Valid operators are +, -, *, /. Each operand may be an integer or another expression.
+
+Some examples:
+  ["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
+  ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
+
+'''
+
 class Solution(object):
     def evalRPN(self, tokens):
         """
@@ -53,3 +69,6 @@ class Solution:
             else:
                 stack.append(int(token))
         return stack[0]
+
+
+        return int(stack[-1])
