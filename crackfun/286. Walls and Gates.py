@@ -24,3 +24,35 @@ class Solution(object):
                            newlevelnodes.append([nx,ny])
             levelnodes = newlevelnodes
 
+
+# Second Time 1/26/2018
+
+class Solution(object):
+    def wallsAndGates(self, rooms):
+        """
+        :type rooms: List[List[int]]
+        :rtype: void Do not return anything, modify rooms in-place instead.
+        """
+        INF = 2 ** 31 - 1
+        if not rooms or not rooms[0]:
+            return
+        m = len(rooms)
+        n = len(rooms[0])
+        queue = []
+        dx = [0, 1, 0, -1]
+        dy = [1, 0, -1, 0]
+        for x in range(m):
+            for y in range(n):
+                if rooms[x][y] == 0:
+                    queue += [(x, y)]
+        val = 1
+        while queue:
+            newqueue = []
+            for node in queue:
+                for dxx, dyy in zip(dx, dy):
+                    if 0 <= node[0] + dxx < m and 0 <= node[1] + dyy < n and rooms[node[0] + dxx][node[1] + dyy] == INF:
+                        rooms[node[0] + dxx][node[1] + dyy] = val
+                        newqueue += [(node[0] + dxx, node[1] + dyy)]
+            queue = newqueue
+            val += 1
+

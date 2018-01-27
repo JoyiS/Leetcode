@@ -3,6 +3,7 @@
 # 双指针 ：end and start;
 # 双counter : 一个是cnt[], 用来记录s[start:end+1]中对应T中字母出现的次数
 # 一个是n--, 用来表示
+# 1/25/2018 revisited
 
 class Solution:
     # @return a string

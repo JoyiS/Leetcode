@@ -28,3 +28,27 @@ class Solution(object):
                     i += 1
                     j += 1
             return (cnt == 1 and i == len(s) and j == len(t)) or len(t) - j == 1
+
+# Second time : 1/23/2018 One time AC
+class Solution(object):
+    def isOneEditDistance(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        if len(s) < len(t):
+            return self.isOneEditDistance(t, s)
+        if len(s) == len(t):
+            cnt = 0
+            for i, j in zip(s, t):
+                if i != j:
+                    cnt += 1
+                    if cnt > 1:
+                        return False
+            return cnt == 1
+
+        for i in range(len(s)):
+            if s[:i] + s[i + 1:] == t:
+                return True
+        return False
