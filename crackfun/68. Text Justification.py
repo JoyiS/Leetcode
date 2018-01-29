@@ -14,6 +14,34 @@ class Solution(object):
         return res + [' '.join(cur).ljust(maxWidth)]
 
 
+#1/28/2018
+class Solution(object):
+    def fullJustify(self, words, maxWidth):
+        """
+        :type words: List[str]
+        :type maxWidth: int
+        :rtype: List[str]
+        """
+        if maxWidth == 0:
+            return ['']
+        wordNum = 0
+        NumofChar = 0
+        res = []
+        allres = []
+        for word in words:
+            if NumofChar + wordNum + len(word)<=maxWidth:
+                wordNum+=1
+                NumofChar += len(word)
+                res+=[word]
+            else:
+                for sp in range((maxWidth - NumofChar)):
+                    res[sp%((wordNum-1) or 1)]+=' '
+                allres+=[''.join(res)]
+                wordNum = 1
+                NumofChar = len(word)
+                res = [word]
+        allres+=[' '.join(res).ljust(maxWidth)]
+        return allres
 
 # My bad/not working solution.......
 class Solution(object):

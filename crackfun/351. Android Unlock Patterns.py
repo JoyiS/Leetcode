@@ -34,3 +34,32 @@ class Solution(object):
         self.ans = 0
         dfs(m, n, -99, visited, 0)
         return self.ans
+
+
+
+# 1/26/2018
+class Solution(object):
+    def numberOfPatterns(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        self.flags = [False] * 10
+        self.rules = [[3, 7, 9], [8], [1, 7, 9], [6], [], [4], [1, 3, 9], [2], [1, 3, 7]]
+
+        return sum(4 * self.dfs(1, i) + 4 * self.dfs(2, i) + self.dfs(5, i) for i in range(m, n + 1))
+
+    def dfs(self, value, count):
+
+        if count == 1:
+            return 1
+
+        ans = 0
+        self.flags[value] = True
+        for i in range(1, 10):
+            if self.flags[i] is False and (i not in self.rules[value - 1] or self.flags[(i + value) / 2]):
+                ans += self.dfs(i, count - 1)
+
+        self.flags[value] = False
+        return ans

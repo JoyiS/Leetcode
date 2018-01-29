@@ -4,22 +4,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-
-        if len(nums) < 3:
-            return []
-        nums.sort()
         res = []
-        oldtarget = None
-
-        for i in range(len(nums) - 2):
-            target = -nums[i]
-            if target != oldtarget:
-                oldj = None
-                for j in range(i + 1, len(nums)):
-                    if nums[j] != oldj:
-                        s = nums[j + 1:]
-                        if target - nums[j] in s:
-                            res.append([nums[i], nums[j], target - nums[j]])
-                            oldj = nums[j]
-                oldtarget = target
+        nums.sort()
+        last = None
+        for i in range(len(nums)):
+            if nums[i] != last:
+                last = nums[i]
+                newtarget = 0-nums[i]
+                d = {}
+                lastj = None
+                for j in range(i+1,len(nums)):
+                    if nums[j] != lastj:
+                        if nums[j] in d:
+                            res += [[nums[i],newtarget - nums[j], nums[j]]]
+                            lastj = nums[j]
+                        else:
+                            d[newtarget - nums[j]] = j
         return res

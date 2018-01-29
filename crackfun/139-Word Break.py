@@ -12,3 +12,13 @@ class Solution(object):
                 if dp[k] and s[k:i] in wordDict:
                     dp[i] = True
         return dp[-1]
+
+# Second Time the time complexity if superior than the first one O(len(s)*len(dict))
+class Solution(object):
+    def wordBreak(self, s, words):
+        d = [False] * len(s)
+        for i in range(len(s)):
+            for w in words:
+                if w == s[i-len(w)+1:i+1] and (i-len(w) == -1 or d[i-len(w)]):
+                    d[i] = True
+        return d[-1]

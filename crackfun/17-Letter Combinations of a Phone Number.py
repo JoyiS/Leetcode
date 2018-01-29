@@ -64,3 +64,24 @@ class Solution(object):
 
         dfs(digits, 0, [], d)
         return self.res
+
+
+# second time 1/26/2018
+class Solution(object):
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        self.d = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
+        self.res = []
+        self.helper(digits, '')
+        return self.res
+
+    def helper(self, digiIn, temp):
+        if digiIn == '':
+            if temp != '':
+                self.res += [temp]
+            return
+        for x in self.d[digiIn[0]]:
+            self.helper(digiIn[1:], temp + x)
