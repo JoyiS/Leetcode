@@ -161,7 +161,6 @@ def mergeab(a,b,m,n):
         a[k]=a[i]
         k-=1
         i-=1
-
     while j>=0:
         a[k]=b[j]
         k-=1

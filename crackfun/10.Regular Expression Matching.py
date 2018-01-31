@@ -21,4 +21,9 @@ class Solution:
                     dp[i][j] = (dp[i-1][j-1] and s[i-1]==p[j-1]) # this is a cleaner way to avoid too many if conditions
         return dp[len(s)][len(p)]
 
-#
+# analyze the three conditions:
+# dp[i][j] = dp[i][j-1] or dp[i][j-2] or (dp[i-1][j] and (s[i-1]==p[j-2] or p[j-2]=='.'))
+# 1. * does not count
+# 2. preceding element does not count: dp[i][j-2]
+# 3. one or more of preceding element
+        # (dp[i-1][j] and (s[i-1]==p[j-2] or p[j-2]=='.'))

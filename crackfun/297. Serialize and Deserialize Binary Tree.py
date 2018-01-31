@@ -72,3 +72,63 @@ trl.right = trlr
 The preorder output:
     ',1,2,None,None,3,4,6,None,None,7,None,None,5,None,None'
 '''
+
+# 1/29/2018 BFS Traversal
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Codec:
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+
+        :type root: TreeNode
+        :rtype: str
+        """
+        res = ''
+        if not root:
+            return
+        queue = [root]
+        while queue:
+            node = queue.pop(0)
+            if not node:
+                res += 'None '
+                continue
+            res += str(node.val) + ' '
+            queue += [node.left]
+            queue += [node.right]
+        return res
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+
+        :type data: str
+        :rtype: TreeNode
+        """
+        if not data:
+            return None
+        string = data.split(' ')
+        string = string[:-1]
+        root = TreeNode(int(string[0]))
+        queue = [root]
+        i = 1
+        while i < len(string):
+            curr = queue.pop(0)
+            if string[i] != 'None':
+                curr.left = TreeNode(int(string[i]))
+                queue += [curr.left]
+            i += 1
+            if string[i] != 'None':
+                curr.right = TreeNode(int(string[i]))
+                queue += [curr.right]
+            i += 1
+        return root
+
+
+        # Your Codec object will be instantiated and called as such:
+        # codec = Codec()
+        # codec.deserialize(codec.serialize(root))

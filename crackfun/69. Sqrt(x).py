@@ -16,3 +16,5 @@ class Solution(object):
                 upper = mid - 1
             else:
                 lower = mid + 1
+
+#1/29/2018 Second time binary search and also Newton's method
