@@ -35,3 +35,18 @@ class Solution(object):
                 minv = prices[i]
 
         return dp[-1]
+
+    #1/30
+
+    class Solution(object):
+        def maxProfit(self, prices):
+            if len(prices) < 2:
+                return 0
+            minv = prices[0]
+            dp = [0] * len(prices)
+            for i in range(1, len(prices)):
+                dp[i] = max(dp[i - 1], prices[i] - minv)
+                if prices[i] < minv:
+                    minv = prices[i]
+
+            return dp[-1]

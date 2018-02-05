@@ -46,4 +46,50 @@ class Solution(object):
         return -1
 
 
+#-------------------------
+# Bottom Up
+class Solution(object):
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        MAX = float('inf')
+        dp = [MAX]*(amount+1)
+        dp[0] = 0
+        for i in range(1,amount+1):
+            for c in range(len(coins)):
+                if i >= coins[c]:
+                    dp[i] = min(1+dp[i-coins[c]],dp[i])
+
+        return [dp[amount], -1][dp[amount]==MAX]
+
+# Top Down
+class Solution(object):
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        if amount < 1:
+            return 0
+        dp = [0] * (amount + 1)
+        return self.helper(coins, amount, dp)
+
+    def helper(self, coins, amount, dp):
+        if amount < 0:
+            return -1
+        if amount == 0:
+            return 0
+        if dp[amount]:
+            return dp[amount]
+        MAX = float('inf')
+        for c in coins:
+            res = self.helper(coins, amount - c, dp)
+            if 0 <= res < MAX:
+                MAX = 1 + res
+        dp[amount] = -1 if MAX == float('inf') else MAX
+        return dp[amount]
 

@@ -16,3 +16,11 @@ class Solution(object):
             s = news
             i+=1
         return s
+
+# 2/4/2017
+class Solution:
+    def permute(self, nums):
+        res = [[nums[0]]]
+        for i in range(1, len(nums)):
+            res = [a[:j] + [nums[i]] + a[j:] for a in res for j in range(len(a)+1)]
+        return res
