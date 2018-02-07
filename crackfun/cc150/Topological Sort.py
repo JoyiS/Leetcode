@@ -1,3 +1,6 @@
+'''
+Time Complexity: The above algorithm is simply DFS with an extra stack. So time complexity is same as DFS which is O(V+E).
+'''
 from collections import defaultdict
 # Class to represent a graph
 class Graph:

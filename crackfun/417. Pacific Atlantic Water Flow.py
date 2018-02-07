@@ -10,7 +10,6 @@ class Solution(object):
         m = len(matrix)
         n = len(matrix[0])
         p_visited = [[False for _ in range(n)] for _ in range(m)]
-
         a_visited = [[False for _ in range(n)] for _ in range(m)]
         result = []
 
