@@ -36,3 +36,50 @@ class Solution(object):
         else:
             return []
 
+#--------------------------------------
+class Solution:
+    def findOrder(self, numCourses, prerequisites):
+        self.V = []
+        self.graph = {}
+        for pair in prerequisites:
+            if pair[0] not in self.V:
+                self.V += [pair[0]]
+            if pair[1] not in self.V:
+                self.V += [pair[1]]
+            self.addEdge(pair[0], pair[1])
+        stack = self.topologicalSort()
+        if len(stack) == len(self.V):
+            for x in range(numCourses):
+                if x not in self.V:
+                    stack.append(x)
+        return stack
+
+    def addEdge(self, u, v):
+        if v not in self.graph:
+            self.graph[v] = [u]
+        else:
+            self.graph[v] += [u]
+
+    def topologicalSortUtil(self, x, stack, key):
+        self.visited[x] = True
+        if x in self.graph:
+            for k in self.graph[x]:
+                if k in key:
+                    self.flag = 1
+                    break
+                if not self.visited[k]:
+                    self.topologicalSortUtil(k, stack, key + [k])
+        stack.insert(0, x)
+
+    def topologicalSort(self):
+        stack = []
+        self.visited = {}
+        self.flag = 0
+        for x in self.V:
+            self.visited[x] = False
+        for x in self.V:
+            if self.visited[x] == False:
+                self.topologicalSortUtil(x, stack, [x])
+        if self.flag:
+            return []
+        return stack

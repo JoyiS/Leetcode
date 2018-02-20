@@ -48,7 +48,7 @@ class Solution(object):
         # globle v.r.s
         G, W = collections.defaultdict(set), collections.defaultdict(float)
         for (A, B), V in zip(equations, values):
-            G[A], G[B] = G[A] | {B}, G[B] | {A}  # |:union set, do DFS/BFS later so not need enlarge to all hiden edges
+            G[A], G[B] = G[A] | {B}, G[B] | {A}  # |:union set, do DFS/BFS later so not need enlarge to all hidden edges
             W[A, B], W[B, A] = V, 1.0 / V  # values for edges
 
         # all queries

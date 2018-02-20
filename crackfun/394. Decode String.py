@@ -3,7 +3,7 @@
 class Solution(object):
     def decodeString(self, s):
         stack = []
-        stack.append(["", 1])
+        stack.append(["", 1]) # This is very important
         num = ""
         for ch in s:
             if ch.isdigit():

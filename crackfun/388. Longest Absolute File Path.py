@@ -44,12 +44,11 @@ class Solution(object):
 class Solution(object):
     def lengthLongestPath(self, input):
         maxlen = 0
-        pathlen = {0: 0}
+        pathlen = {0: ('',0)}
         for line in input.splitlines():
             name = line.lstrip('\t')    # what a surprise that len('\t') = 1
             depth = len(line) - len(name)
             if '.' in name:
-                maxlen = max(maxlen, pathlen[depth] + len(name))
-            else:
-                pathlen[depth + 1] = pathlen[depth] + len(name) + 1 # plus 1 for '\' between different levels
+                maxlen = max(maxlen, pathlen[depth][1] + len(name))
+            pathlen[depth + 1] = (pathlen[depth][0]+'/'+name, pathlen[depth][1] + len(name) + 1) # plus 1 for '\' between different levels
         return maxlen

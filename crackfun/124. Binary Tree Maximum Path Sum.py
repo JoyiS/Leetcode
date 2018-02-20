@@ -46,3 +46,24 @@ class Solution(object):
         findMaxUtil(root)
         return findMaxUtil.res
 
+# 2/12/2018
+class Solution(object):
+    def maxPathSum(self, root):
+
+        def maxSinglePath(root):
+            if not root:
+                return 0
+
+            l = maxSinglePath(root.left)
+            r = maxSinglePath(root.right)
+
+            maxsingle = max(l + root.val, r + root.val, root.val)
+            maxoverall = max(maxsingle, root.val + l + r)
+
+            maxSinglePath.res = max(maxSinglePath.res, maxoverall)
+            return maxsingle
+
+        maxSinglePath.res = float('-inf')
+        maxSinglePath(root)
+        return maxSinglePath.res
+

@@ -74,3 +74,31 @@ class Solution:
             else:
                 return ''
         return s[begin + 1:end]
+
+# 2/9/2018
+# AC I am so good!!!!
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        n = len(s)
+        if n < 2:
+            return s
+        d = [[False for i in range(n)] for j in range(n)]
+        maxlen = 1
+        for i in range(n):
+            d[i][i] = True
+        for i in range(n - 2, -1, -1):
+            d[i][i + 1] = s[i] == s[i + 1]
+            if d[i][i+1] and maxlen<2:
+                maxlen = 2
+                start = i
+            for j in range(i + 2, n):
+                d[i][j] = d[i + 1][j - 1] and s[i] == s[j]
+                if d[i][j] and j - i + 1 >= maxlen:
+                    maxlen = j - i + 1
+                    start = i
+        if maxlen > 1:
+            return s[start:start + maxlen]
+        else:
+            return s[0]
+

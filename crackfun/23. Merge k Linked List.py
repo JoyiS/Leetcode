@@ -84,3 +84,34 @@ class Solution(object):
         else:
             point.next=l1
         return head.next
+
+# 2/7/2018 AC
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    import heapq
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        heap = []
+        dummy = res = ListNode(0)
+        for l in lists:
+            if l:
+                heapq.heappush(heap, (l.val, l))
+        while heap:
+            resList = heapq.heappop(heap)
+            res.next = ListNode(resList[0])
+            res = res.next
+            l = resList[1]
+            l = l.next
+            if l:
+                heapq.heappush(heap, (l.val, l))
+        return dummy.next
+
+

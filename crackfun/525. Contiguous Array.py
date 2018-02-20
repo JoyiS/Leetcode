@@ -23,3 +23,26 @@ class Solution(object):
             else:
                 res = max(res, i - d[sumi[i]])
         return res
+
+# 2/14/2018
+# Second Time
+
+class Solution:
+    def findMaxLength(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        cum = 0
+        d = {}
+        d[0] = -1
+        res = 0
+        for idx, x in enumerate(nums):
+            if x==0:
+                x = -1
+            cum += x
+            if cum not in d:
+                d[cum] = idx
+            else:
+                res = max(res, idx - d[cum])
+        return res

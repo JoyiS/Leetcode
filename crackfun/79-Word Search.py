@@ -83,3 +83,39 @@ class Solution:
                     if (dfs(i, j, word[1:])):
                         return True
         return False
+
+# 2/8/2018
+
+class Solution(object):
+    def exist(self, board, word):
+        """
+        :type board: List[List[str]]
+        :type word: str
+        :rtype: bool
+        """
+        self.direction = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
+        def dfs(position, board, word):
+            if len(word) == 0:
+                return True
+            [x, y] = position
+            for dx, dy in self.direction:
+                if 0 <= x + dx < len(board) and 0 <= y + dy < len(board[0]) and board[x + dx][y + dy] == word[0]:
+                    temp = word[0]
+                    board[x + dx][y + dy] = 0
+                    if dfs([x + dx, y + dy], board, word[1:]):
+                        return True
+                    board[x + dx][y + dy] = temp
+            return False
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j] == word[0]:
+                    temp = word[0]
+                    board[i][j] = 0
+                    if dfs([i, j], board, word[1:]):
+                        return True
+                    board[i][j] = temp
+        return False
+
+
