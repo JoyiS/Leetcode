@@ -44,3 +44,30 @@ class Solution:
                     else:
                         cnt = 0
         return res
+
+# 2/21/2018 fast AC
+
+class Solution:
+    def maximalSquare(self, matrix):
+        """
+        :type matrix: List[List[str]]
+        :rtype: int
+        """
+        if not matrix or not matrix[0]:
+            return 0
+        n = len(matrix[0])
+        h = [0 for i in range(n + 1)]
+
+        res = 0
+        for row in matrix:
+            for i in range(n):
+                h[i] = h[i] + 1 if row[i] == '1' else 0
+            # print(h)
+            stack = [-1]
+            for i in range(n + 1):
+                while h[i] < h[stack[-1]]:
+                    hh = h[stack.pop()]
+                    ww = i - stack[-1] - 1
+                    res = max(min(hh, ww) ** 2, res)
+                stack.append(i)
+        return res

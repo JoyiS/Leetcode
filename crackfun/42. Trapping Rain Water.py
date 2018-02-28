@@ -1,10 +1,6 @@
 # Method 1: Using Stack
 class Solution(object):
     def trap(self, height):
-        """
-        :type height: List[int]
-        :rtype: int
-        """
         if len(height) < 3:
             return 0
         stack = [0]

@@ -33,3 +33,24 @@ class Solution(object):
                     break
         return int(''.join(str(a) for a in strnum))
 
+#2/21/2018
+class Solution:
+    def maximumSwap(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        s = [int(a) for a in str(num)]
+        ds = s[:]
+        ds.sort(reverse=True)
+
+        level = 0
+        while level < len(s):
+            if ds[level] == s[level]:
+                level += 1
+                continue
+            else:
+                idx = len(s) - 1 - s[::-1].index(ds[level])
+                s[level], s[idx] = s[idx], s[level]
+                break
+        return int(''.join(str(a) for a in s))

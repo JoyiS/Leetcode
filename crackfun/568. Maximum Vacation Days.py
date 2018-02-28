@@ -56,7 +56,6 @@ When the graph is sparse, we can precompute flights_available[i] = [j for j, adj
 
 '''
 
-
 def maxVacationDays(self, flights, days):
     NINF = float('-inf')
     N, K = len(days), len(days[0])
@@ -71,3 +70,35 @@ def maxVacationDays(self, flights, days):
                     cur[j] = max(cur[j], best[i] + days[j][t])
         best = cur
     return max(best)
+
+#2/23/2018 TLE
+class Solution:
+    def maxVacationDays(self, flights, days):
+        if not days or not days[0] or not flights:
+            return 0
+        K = len(days[0])  # K weeks
+        N = len(flights)
+        res = 0
+        k = 0
+        queue = [(0, 0, 0)]
+        while queue:
+            i, stay, k = queue.pop()
+            if k == K:
+                res = max(res, stay)
+                continue
+            for j, isflight in enumerate(flights[i]):
+                if isflight == 1:
+                    # print(queue)
+                    queue.append((j, stay + days[j][k], k + 1))
+            else:
+                queue.append((i, stay + days[i][k], k + 1))
+        return res
+
+
+
+
+
+
+
+
+

@@ -24,11 +24,7 @@ where the largest sum among the two subarrays is only 18.
 # method 1: Binary Search
 class Solution(object):
     def splitArray(self, nums, m):
-        """
-        :type nums: List[int]
-        :type m: int
-        :rtype: int
-        """
+
         low = max(nums)
         high = sum(nums)
 

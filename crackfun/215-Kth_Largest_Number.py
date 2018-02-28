@@ -38,3 +38,20 @@ class Solution(object):
         if len(nums) - len(small_nums) < k :
             return self.findKthLargest(small_nums, k - (len(nums) - len(small_nums)))
         return pivot
+
+# This solution will use too much memory by giving the large-nums and small-nums
+
+class Solution:
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        for i in range(len(nums), len(nums)-k, -1):
+            tmp = 0
+            for j in range(i):
+                if nums[j] > nums[tmp]:
+                    tmp = j
+            nums[tmp], nums[i-1] = nums[i-1], nums[tmp]
+        return nums[len(nums)-k]

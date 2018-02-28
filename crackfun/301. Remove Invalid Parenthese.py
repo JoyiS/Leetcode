@@ -44,7 +44,8 @@ class Solution(object):
                 cnt += 1
             elif s[i] == pair[1]:
                 cnt -= 1
-            if cnt >= 0: continue
+            if cnt >= 0:
+                continue
             for j in range(Lj, i + 1):
                 if s[j] == pair[1] and (j == Lj or s[j - 1] != pair[1]):
                     self.helper(s[:j] + s[j + 1:], i, j, pair)

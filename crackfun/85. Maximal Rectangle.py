@@ -18,10 +18,7 @@ Convert the 2-D area into a histogram... where heights represent the previous ro
 
 class Solution(object):
     def maximalRectangle(self, matrix):
-        """
-        :type matrix: List[List[str]]
-        :rtype: int
-        """
+
         if not matrix or not matrix[0]:
             return 0
         n = len(matrix[0])
