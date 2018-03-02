@@ -17,10 +17,13 @@ class Solution:
         start, L, dis = 0, 0, m + 1
         for i in range(m):
             if dic[ord(S[i])] > 0:
+                print(n, S[start:i])
                 cnt[ord(S[i])] -= 1
                 if cnt[ord(S[i])] >= 0:
                     n -= 1
+
             if n == 0:
+                print(n, S[start:i+1])
                 while start <= i:
                     if dic[ord(S[start])] > 0:
                         if cnt[ord(S[start])] < 0:
@@ -31,7 +34,7 @@ class Solution:
                 if i - start + 1 < dis:
                     dis = i - start + 1
                     L = start
-
+                print(n, S[start:i+1])
         if dis != m + 1:
             return S[L:L + dis]
         return ""

@@ -21,16 +21,17 @@ class Solution():
         self.dfs(target, pos+1, line, num+1)
         self.dfs(target, pos+1, line+('' if num==0 else str(num))+target[pos], 0)
 
-    def validWordAbbreviation(self,word,abbr):
+    def validWordAbbreviation(word,abbr):
         digit = '0123456789'
         i = 0
         j = 0
         while i < len(abbr):
             num = 0
             while i < len(abbr) and abbr[i] in digit:
-                num += num*10 + int(abbr[i])
+                num = num*10 + int(abbr[i])
                 i += 1
             j = j+num
+            print(j)
             if j==len(word):
                 return True
             if j < len(word) and word[j] == abbr[i]:

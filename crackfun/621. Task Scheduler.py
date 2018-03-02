@@ -57,18 +57,18 @@ class Solution(object):
 class Solution(object):
     import collections
     def leastInterval(self, tasks, n):
-    counts = collections.Counter(tasks)
-    dct = [i for i in counts.values()]
-    cnt = 0
-    while len(dct) > 0 and max(dct) > 1:
-        dct.sort(reverse=True)
-        cnt += n + 1
-        if len(dct) >= n + 1:
-            dct[:n + 1] = [i - 1 for i in dct[:n + 1]]
-            dct = [i for i in dct if i > 0]
-        else:
-            dct = [i - 1 for i in dct if i > 1]
-    return cnt + len(dct)
+        counts = collections.Counter(tasks)
+        dct = [i for i in counts.values()]
+        cnt = 0
+        while len(dct) > 0 and max(dct) > 1:
+            dct.sort(reverse=True)
+            cnt += n + 1
+            if len(dct) >= n + 1:
+                dct[:n + 1] = [i - 1 for i in dct[:n + 1]]
+                dct = [i for i in dct if i > 0]
+            else:
+                dct = [i - 1 for i in dct if i > 1]
+        return cnt + len(dct)
 
 
 # Method 2: Priority Queue # This method can generate the output OKay
