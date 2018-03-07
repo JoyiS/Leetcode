@@ -28,32 +28,39 @@ def mergesort(s):
             k+=1
 
 # Quick Sort
-def quicksort(s,start,end):
-	if start<end:
-	    pivot = partition(s,start,end)
-		quicksort(s, start, pivot-1)
-	    quicksort(s,pivot+1,end)
+def partition(arr, low, high):
+    i = (low - 1)  # index of smaller element
+    pivot = arr[high]  # pivot
 
-def partition(s,start,end):
-	leftmark=start+1
-	rightmark=end
-	done = False
-	while done is not True:
-	    while leftmark<=rightmark and s[leftmark]<=s[start]:
-			leftmark+=1
-		while rightmark>=leftmark and s[rightmark]>=s[start]:
-		    rightmark-=1
-		if leftmark > rightmark:
-		    done=True
-		else:
-		    temp = s[leftmark]
-			s[leftmark] = s[rightmark]
-            s[rightmark] = temp
-	temp = s[0]
-	s[0]=s[rightmark]
-	s[rightmark]=temp
-    print('pivot: '+ str(rightmark ))
-	return rightmark
+    for j in range(low, high):
+
+        # If current element is smaller than or
+        # equal to pivot
+        if arr[j] <= pivot:
+            # increment index of smaller element
+            i = i + 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return (i + 1)
+
+
+# The main function that implements QuickSort
+# arr[] --> Array to be sorted,
+# low  --> Starting index,
+# high  --> Ending index
+
+# Function to do Quick sort
+def quickSort(arr, low, high):
+    if low < high:
+        # pi is partitioning index, arr[p] is now
+        # at right place
+        pi = partition(arr, low, high)
+
+        # Separately sort elements before
+        # partition and after partition
+        quickSort(arr, low, pi - 1)
+        quickSort(arr, pi + 1, high)
 
 
 def sortColors(nums):
